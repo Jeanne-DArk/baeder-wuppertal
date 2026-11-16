@@ -1,0 +1,77 @@
+{
+  "stand": "16.11.2026",
+  "quelle": "Öffnungszeiten-Grafiken auf den Bad-Seiten von wuppertal.de",
+  "baeder": [
+    {
+      "name": "Schwimmoper",
+      "adresse": "Südstraße 29, 42103 Wuppertal",
+      "kassenschluss_minuten_vorher": 60,
+      "schwimmzeit_ende_minuten_vorher": 30,
+      "schwimmhalle": {
+        "Mo": ["06:30-22:00"], "Di": ["06:30-22:00"], "Mi": ["06:30-13:00"], "Do": ["06:30-22:00"],
+        "Fr": ["06:30-22:00"], "Sa": ["09:00-18:00"], "So": ["09:00-18:00"]
+      },
+      "sauna": {
+        "Mo": ["10:00-22:00"], "Di": ["10:00-22:00"], "Mi": ["10:00-22:00"], "Do": ["10:00-22:00"],
+        "Fr": ["10:00-22:00"], "Sa": ["09:00-18:00"], "So": ["09:00-18:00"]
+      },
+      "hinweis": "Mittwochs Damensauna. Fitnessbereich mittwochs bis 22:00 Uhr. Saunakartenverkauf endet 1,5 Stunden vor Schließung."
+    },
+    {
+      "name": "Gartenhallenbad Langerfeld",
+      "adresse": "Am Timpen 51, 42389 Wuppertal",
+      "kassenschluss_minuten_vorher": 60,
+      "schwimmzeit_ende_minuten_vorher": 30,
+      "schwimmhalle": {
+        "Mo": ["06:45-15:00"], "Di": ["06:45-14:00"], "Mi": ["06:45-21:00"], "Do": ["06:45-21:00"],
+        "Fr": ["06:45-21:00"], "Sa": ["10:00-16:30"], "So": ["10:00-16:30"]
+      },
+      "sauna": {
+        "Mo": ["09:00-21:00"], "Di": ["09:00-21:00"], "Mi": ["09:00-21:00"], "Do": ["09:00-21:00"],
+        "Fr": ["09:00-21:00"], "Sa": ["10:30-16:00"], "So": ["10:30-16:00"]
+      },
+      "hinweis": "Donnerstags Damensauna. Saunakartenverkauf endet 1,5 Stunden vor Schließung."
+    },
+    {
+      "name": "Gartenhallenbad Cronenberg",
+      "adresse": "Zum Tal, 42349 Wuppertal",
+      "kassenschluss_minuten_vorher": 60,
+      "schwimmzeit_ende_minuten_vorher": 30,
+      "schwimmhalle": {
+        "Mo": ["06:45-13:00"], "Di": ["14:00-21:00"], "Mi": ["06:45-21:00"], "Do": ["06:45-21:00"],
+        "Fr": ["06:45-18:00"], "Sa": ["10:00-16:30"], "So": ["10:00-16:30"]
+      },
+      "sauna": {
+        "Mo": [], "Di": ["14:00-21:00"], "Mi": ["10:00-21:00"], "Do": ["10:00-21:00"],
+        "Fr": ["10:00-21:00"], "Sa": ["10:30-16:30"], "So": ["10:30-16:30"]
+      },
+      "hinweis": "Donnerstags Damensauna. Planschbecken bis Januar 2027 gesperrt. Saunakartenverkauf endet 1,5 Stunden vor Schließung."
+    },
+    {
+      "name": "Schwimmsportleistungszentrum",
+      "adresse": "Küllenhahner Straße 130, 42349 Wuppertal",
+      "kassenschluss_minuten_vorher": 60,
+      "schwimmzeit_ende_minuten_vorher": 30,
+      "schwimmhalle": {
+        "Mo": [], "Di": ["06:45-09:00"], "Mi": ["06:45-09:00", "18:00-21:00"], "Do": ["06:45-09:00"],
+        "Fr": ["06:45-09:00"], "Sa": ["09:00-13:00"], "So": ["09:00-13:00"]
+      },
+      "sauna": {},
+      "hinweis": "Sauna nur für Abo-Card-Inhaber*innen. Aufzug derzeit defekt."
+    },
+    {
+      "name": "Stadtbad Uellendahl",
+      "adresse": "Röttgen 149, 42109 Wuppertal",
+      "schwimmhalle": {},
+      "sauna": {},
+      "hinweis": "Voraussichtlich bis zum 2. Quartal 2028."
+    },
+    {
+      "name": "Freibad Mählersbeck",
+      "adresse": "Mählersbeck 71, 42279 Wuppertal",
+      "schwimmhalle": {},
+      "sauna": {},
+      "hinweis": "Freibadsaison 2026 beendet."
+    }
+  ]
+}

@@ -15,6 +15,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data" / "schliessungen.json"
+ZEITEN = ROOT / "data" / "oeffnungszeiten.json"
+RE_SPANNE = re.compile(r"^\d{2}:\d{2}-\d{2}:\d{2}$")
 
 ADRESSEN = {
     "Schwimmoper": "Schwimmoper, Südstraße 29, 42103 Wuppertal",
@@ -198,14 +200,27 @@ def build_ics(eintraege):
     (ROOT / "schliessungen.ics").write_text("\r\n".join(fold(x) for x in lines) + "\r\n", encoding="utf-8", newline="")
 
 
-def build_html(eintraege):
+def pruefe_zeiten(zeiten):
+    for b in zeiten["baeder"]:
+        if b["name"] not in ADRESSEN:
+            raise Eingabefehler(f"Öffnungszeiten: Bad „{b['name']}“ unbekannt.")
+        for bereich in ("schwimmhalle", "sauna"):
+            for tag, spannen in b.get(bereich, {}).items():
+                if tag not in ICS_TAGE:
+                    raise Eingabefehler(f"Öffnungszeiten {b['name']}: Wochentag „{tag}“ unbekannt (Mo bis So).")
+                for sp in spannen:
+                    if not RE_SPANNE.match(sp) or sp[:5] >= sp[6:]:
+                        raise Eingabefehler(f"Öffnungszeiten {b['name']}, {tag}: „{sp}“ muss wie „06:30-22:00“ aussehen.")
+
+
+def build_html(eintraege, zeiten):
     daten = json.dumps(eintraege, ensure_ascii=False)
     noscript = "\n".join(
         f"<li><strong>{html.escape(e['bad'])}: {html.escape(e['status'])} ({html.escape(e['grund'])})</strong><br>{html.escape(e['beschreibung'])}</li>"
         for e in eintraege
     )
     vorlage = (ROOT / "vorlage.html").read_text(encoding="utf-8")
-    seite = vorlage.replace("{{DATEN}}", daten).replace("{{NOSCRIPT}}", noscript)
+    seite = vorlage.replace("{{ZEITEN}}", json.dumps(zeiten, ensure_ascii=False)).replace("{{DATEN}}", daten).replace("{{NOSCRIPT}}", noscript)
     (ROOT / "index.html").write_text(seite, encoding="utf-8")
 
 
@@ -214,8 +229,10 @@ def main():
     try:
         eintraege = [normalisiere(e, nr) for nr, e in enumerate(roh, start=1)]
         eintraege.sort(key=lambda e: e["start"])
+        zeiten = json.loads(ZEITEN.read_text(encoding="utf-8"))
+        pruefe_zeiten(zeiten)
         build_ics(eintraege)
-        build_html(eintraege)
+        build_html(eintraege, zeiten)
     except Eingabefehler as err:
         sys.exit(f"Fehler: {err}")
     print(f"{len(eintraege)} Einträge geschrieben.")

@@ -8,6 +8,22 @@
   body { font-family: system-ui, sans-serif; max-width: 46rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; line-height: 1.5; color: #1a1a1a; background: #fff; }
   h1 { font-size: 1.6rem; margin-bottom: .25rem; }
   .hinweis { color: #555; margin-top: 0; }
+  .status { margin: 1.5rem 0; }
+  .status ul { list-style: none; padding: 0; margin: 0; }
+  .status li { display: flex; flex-wrap: wrap; gap: .25rem .75rem; align-items: baseline; padding: .55rem .75rem; margin: .4rem 0; border-radius: .4rem; border-left: .4rem solid #999; background: #f4f4f4; }
+  .status li.offen { border-left-color: #2e7d32; background: #e8f5e9; }
+  .status li.unklar { border-left-color: #e69138; background: #fff4e5; }
+  .status .punkt { font-weight: 700; min-width: 7.5rem; }
+  .status li.offen .punkt { color: #1b5e20; }
+  .status .info { color: #333; }
+  .status .warnung { color: #8a4b00; font-weight: 600; flex-basis: 100%; }
+  .bad { position: relative; font-weight: 600; text-decoration: underline dotted; cursor: help; }
+  .bad:focus { outline: 2px solid #0b5394; outline-offset: 2px; }
+  .tooltip { display: none; position: absolute; left: 0; top: 1.6rem; z-index: 10; width: min(22rem, 85vw); background: #fff; color: #1a1a1a; border: 1px solid #bbb; border-radius: .4rem; padding: .6rem .75rem; box-shadow: 0 4px 14px rgba(0,0,0,.15); font-weight: 400; font-size: .9rem; line-height: 1.4; cursor: auto; }
+  .bad:hover .tooltip, .bad:focus .tooltip, .bad:focus-within .tooltip, .bad.auf .tooltip { display: block; }
+  .tooltip table { border-collapse: collapse; margin: .25rem 0 .4rem; }
+  .tooltip td { padding: 0 .6rem 0 0; vertical-align: top; }
+  .stand { font-size: .85rem; color: #555; margin-top: .5rem; }
   .ki-hinweis { border: 1px solid #e0c36c; background: #fff8e1; border-radius: .5rem; padding: .75rem 1rem; margin: 1rem 0; font-size: .95rem; }
   .abo { background: #eef5fb; border-radius: .5rem; padding: 1rem; margin: 1.5rem 0; }
   .abo a.knopf { display: inline-block; background: #0b5394; color: #fff; padding: .5rem .9rem; border-radius: .35rem; text-decoration: none; margin: .25rem .5rem .25rem 0; }
@@ -26,6 +42,12 @@
 <main>
 <h1>Schwimmbäder Wuppertal – Schließungen</h1>
 <p class="hinweis">Schließungen und verkürzte Öffnungszeiten der städtischen Schwimmbäder an einem Ort.</p>
+
+<section class="status" aria-labelledby="status-titel" aria-live="polite">
+<h2 id="status-titel">Jetzt geöffnet?</h2>
+<ul id="status-liste"><li>Wird geladen …</li></ul>
+<p class="stand" id="status-stand"></p>
+</section>
 
 <section class="abo" aria-labelledby="abo-titel">
 <h2 id="abo-titel">Kalender abonnieren</h2>
@@ -138,6 +160,135 @@ function render(ziel, liste) {
 }
 render("kommend", kommend);
 render("vergangen", vergangen);
+
+const ZEITEN = {"stand": "16.11.2026", "quelle": "Öffnungszeiten-Grafiken auf den Bad-Seiten von wuppertal.de", "baeder": [{"name": "Schwimmoper", "adresse": "Südstraße 29, 42103 Wuppertal", "kassenschluss_minuten_vorher": 60, "schwimmzeit_ende_minuten_vorher": 30, "schwimmhalle": {"Mo": ["06:30-22:00"], "Di": ["06:30-22:00"], "Mi": ["06:30-13:00"], "Do": ["06:30-22:00"], "Fr": ["06:30-22:00"], "Sa": ["09:00-18:00"], "So": ["09:00-18:00"]}, "sauna": {"Mo": ["10:00-22:00"], "Di": ["10:00-22:00"], "Mi": ["10:00-22:00"], "Do": ["10:00-22:00"], "Fr": ["10:00-22:00"], "Sa": ["09:00-18:00"], "So": ["09:00-18:00"]}, "hinweis": "Mittwochs Damensauna. Fitnessbereich mittwochs bis 22:00 Uhr. Saunakartenverkauf endet 1,5 Stunden vor Schließung."}, {"name": "Gartenhallenbad Langerfeld", "adresse": "Am Timpen 51, 42389 Wuppertal", "kassenschluss_minuten_vorher": 60, "schwimmzeit_ende_minuten_vorher": 30, "schwimmhalle": {"Mo": ["06:45-15:00"], "Di": ["06:45-14:00"], "Mi": ["06:45-21:00"], "Do": ["06:45-21:00"], "Fr": ["06:45-21:00"], "Sa": ["10:00-16:30"], "So": ["10:00-16:30"]}, "sauna": {"Mo": ["09:00-21:00"], "Di": ["09:00-21:00"], "Mi": ["09:00-21:00"], "Do": ["09:00-21:00"], "Fr": ["09:00-21:00"], "Sa": ["10:30-16:00"], "So": ["10:30-16:00"]}, "hinweis": "Donnerstags Damensauna. Saunakartenverkauf endet 1,5 Stunden vor Schließung."}, {"name": "Gartenhallenbad Cronenberg", "adresse": "Zum Tal, 42349 Wuppertal", "kassenschluss_minuten_vorher": 60, "schwimmzeit_ende_minuten_vorher": 30, "schwimmhalle": {"Mo": ["06:45-13:00"], "Di": ["14:00-21:00"], "Mi": ["06:45-21:00"], "Do": ["06:45-21:00"], "Fr": ["06:45-18:00"], "Sa": ["10:00-16:30"], "So": ["10:00-16:30"]}, "sauna": {"Mo": [], "Di": ["14:00-21:00"], "Mi": ["10:00-21:00"], "Do": ["10:00-21:00"], "Fr": ["10:00-21:00"], "Sa": ["10:30-16:30"], "So": ["10:30-16:30"]}, "hinweis": "Donnerstags Damensauna. Planschbecken bis Januar 2027 gesperrt. Saunakartenverkauf endet 1,5 Stunden vor Schließung."}, {"name": "Schwimmsportleistungszentrum", "adresse": "Küllenhahner Straße 130, 42349 Wuppertal", "kassenschluss_minuten_vorher": 60, "schwimmzeit_ende_minuten_vorher": 30, "schwimmhalle": {"Mo": [], "Di": ["06:45-09:00"], "Mi": ["06:45-09:00", "18:00-21:00"], "Do": ["06:45-09:00"], "Fr": ["06:45-09:00"], "Sa": ["09:00-13:00"], "So": ["09:00-13:00"]}, "sauna": {}, "hinweis": "Sauna nur für Abo-Card-Inhaber*innen. Aufzug derzeit defekt."}, {"name": "Stadtbad Uellendahl", "adresse": "Röttgen 149, 42109 Wuppertal", "schwimmhalle": {}, "sauna": {}, "hinweis": "Voraussichtlich bis zum 2. Quartal 2028."}, {"name": "Freibad Mählersbeck", "adresse": "Mählersbeck 71, 42279 Wuppertal", "schwimmhalle": {}, "sauna": {}, "hinweis": "Freibadsaison 2026 beendet."}]};
+const TAGE = ["So","Mo","Di","Mi","Do","Fr","Sa"];
+const ICS = {SU:0, MO:1, TU:2, WE:3, TH:4, FR:5, SA:6};
+
+// Aktuelle Uhrzeit in Wuppertal, unabhängig von der Zeitzone des Geräts
+function jetztBerlin() {
+  const t = Object.fromEntries(new Intl.DateTimeFormat("de-DE", {timeZone: "Europe/Berlin", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false}).formatToParts(new Date()).map(p => [p.type, p.value]));
+  return new Date(+t.year, +t.month - 1, +t.day, +t.hour % 24, +t.minute);
+}
+const hhmm = d => String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+const minus = (d, min) => new Date(d.getTime() - min * 60000);
+function anTag(tag, zeit) { const [h, m] = zeit.split(":").map(Number); return new Date(tag.getFullYear(), tag.getMonth(), tag.getDate(), h, m); }
+
+// Liegt Zeitpunkt t in einer Schließung für dieses Bad? (verkürzt geöffnet = der weggefallene Teil)
+function schliessungZu(name, t) {
+  for (const e of DATEN) {
+    if (e.bad !== name && !(e.bad === "Alle Hallenbäder" && !name.startsWith("Freibad"))) continue;
+    if (e.status === "eingeschränkt geöffnet") continue;
+    if (e.wiederholung) {
+      const tage = (e.wiederholung.match(/BYDAY=([A-Z,]+)/) || [,""])[1].split(",").map(x => ICS[x]);
+      const bis = parse((e.wiederholung.match(/UNTIL=(\d{8})/) || [,"99991231"])[1]);
+      const s = parse(e.start), en = parse(e.ende);
+      const tag0 = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+      if (!tage.includes(t.getDay()) || tag0 < new Date(s.getFullYear(), s.getMonth(), s.getDate()) || tag0 > bis) continue;
+      const a = anTag(t, hhmm(s)), b = anTag(t, hhmm(en));
+      if (t >= a && t < b) return e;
+      continue;
+    }
+    if (t >= parse(e.start) && t < parse(e.ende)) return e;
+  }
+  return null;
+}
+function feiertagHinweis(t) {
+  return DATEN.find(e => e.bad === "Hallenbäder" && t >= parse(e.start) && t < parse(e.ende));
+}
+function spannen(bad, tag) {
+  const liste = (bad.schwimmhalle || {})[TAGE[tag.getDay()]] || [];
+  return liste.map(sp => [anTag(tag, sp.slice(0, 5)), anTag(tag, sp.slice(6))]);
+}
+function naechsteOeffnung(bad, t) {
+  // in 5-Minuten-Schritten bis zu 9 Tage vorausschauen: erster Zeitpunkt, der in den Öffnungszeiten liegt und nicht in einer Schließung
+  let x = new Date(Math.ceil((t.getTime() + 1) / 300000) * 300000);
+  const grenze = t.getTime() + 9 * 86400000;
+  while (x.getTime() < grenze) {
+    if (spannen(bad, x).some(([a, b]) => x >= a && x < b) && !schliessungZu(bad.name, x)) return x;
+    x = new Date(x.getTime() + 300000);
+  }
+  return null;
+}
+function wann(d, t) {
+  const heute = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+  const diff = Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - heute) / 86400000);
+  const tag = diff === 0 ? "heute" : diff === 1 ? "morgen" : TAGE[d.getDay()] + " " + d.toLocaleDateString("de-DE", {day: "2-digit", month: "2-digit"});
+  return tag + " um " + hhmm(d) + " Uhr";
+}
+function zeitenTabelle(plan) {
+  const reihen = ["Mo","Di","Mi","Do","Fr","Sa","So"].map(k => "<tr><td>" + k + "</td><td>" + ((plan[k] || []).length ? plan[k].map(x => x.replace("-", "–")).join(", ") : "geschlossen") + "</td></tr>");
+  return "<table>" + reihen.join("") + "</table>";
+}
+function tooltip(bad) {
+  let h = "";
+  if (Object.keys(bad.schwimmhalle || {}).length) {
+    h += "<strong>Schwimmhalle</strong>" + zeitenTabelle(bad.schwimmhalle);
+    h += "<p>Kassenschluss " + bad.kassenschluss_minuten_vorher + " Min. vor Schließung. Die Schwimmzeit endet " + bad.schwimmzeit_ende_minuten_vorher + " Min. vor Schließung.</p>";
+  }
+  if (Object.keys(bad.sauna || {}).length) h += "<strong>Sauna</strong>" + zeitenTabelle(bad.sauna);
+  if (bad.hinweis) h += "<p>" + bad.hinweis + "</p>";
+  h += "<p>" + bad.adresse + "</p>";
+  return h;
+}
+function zeile(bad, t) {
+  const li = document.createElement("li");
+  const name = document.createElement("span");
+  name.className = "bad"; name.tabIndex = 0;
+  name.setAttribute("aria-label", bad.name + ", Details anzeigen");
+  name.textContent = bad.name;
+  const tip = document.createElement("span");
+  tip.className = "tooltip"; tip.setAttribute("role", "tooltip"); tip.innerHTML = tooltip(bad);
+  name.append(tip);
+  name.addEventListener("click", () => name.classList.toggle("auf"));
+  const punkt = document.createElement("span"); punkt.className = "punkt";
+  const info = document.createElement("span"); info.className = "info";
+  li.append(punkt, name, info);
+
+  const zu = schliessungZu(bad.name, t);
+  const offen = spannen(bad, t).find(([a, b]) => t >= a && t < b);
+  const feiertag = feiertagHinweis(t);
+  if (zu) {
+    punkt.textContent = "geschlossen";
+    const n = naechsteOeffnung(bad, t);
+    let rest = "";
+    if (n) rest = " · öffnet " + wann(n, t);
+    else if (!zu.wiederholung && parse(zu.ende) - t < 366 * 86400000) {
+      const letzter = zu.ganztaegig ? new Date(parse(zu.ende).getTime() - 86400000) : parse(zu.ende);
+      rest = " · bis einschließlich " + letzter.toLocaleDateString("de-DE", {day: "2-digit", month: "2-digit", year: "numeric"});
+    } else if (bad.hinweis) rest = " · " + bad.hinweis;
+    info.textContent = zu.grund + rest;
+  } else if (feiertag && Object.keys(bad.schwimmhalle || {}).length) {
+    li.className = "unklar"; punkt.textContent = "Sonderzeiten";
+    info.textContent = feiertag.beschreibung;
+  } else if (offen) {
+    const [, ende] = offen;
+    const kasse = minus(ende, bad.kassenschluss_minuten_vorher), schwimm = minus(ende, bad.schwimmzeit_ende_minuten_vorher);
+    li.className = "offen"; punkt.textContent = "geöffnet";
+    info.textContent = "bis " + hhmm(ende) + " Uhr · Kassenschluss " + hhmm(kasse) + " Uhr · Schwimmzeit bis " + hhmm(schwimm) + " Uhr";
+    const rest = Math.round((ende - t) / 60000);
+    if (rest <= 60) {
+      const w = document.createElement("span"); w.className = "warnung";
+      w.textContent = "Schließt in " + rest + " Min." + (t >= kasse ? " Die Kasse ist bereits geschlossen, kein Einlass mehr." : "");
+      li.append(w);
+    }
+  } else {
+    punkt.textContent = "geschlossen";
+    const n = naechsteOeffnung(bad, t);
+    info.textContent = n ? "öffnet " + wann(n, t) : (bad.hinweis || "");
+  }
+  return li;
+}
+function zeigeStatus() {
+  const t = jetztBerlin();
+  const ul = document.getElementById("status-liste");
+  const zeilen = ZEITEN.baeder.map(b => zeile(b, t));
+  zeilen.sort((a, b) => (b.classList.contains("offen") - a.classList.contains("offen")));
+  ul.replaceChildren(...zeilen);
+  document.getElementById("status-stand").textContent = "Stand: " + t.toLocaleDateString("de-DE") + ", " + hhmm(t) + " Uhr. Berechnet aus den regulären Öffnungszeiten (Stand " + ZEITEN.stand + ") und den bekannten Schließungen. Spontane Schließungen können fehlen. Für Details auf den Namen eines Bades tippen oder zeigen.";
+}
+zeigeStatus();
+setInterval(zeigeStatus, 60000);
 </script>
 </body>
 </html>

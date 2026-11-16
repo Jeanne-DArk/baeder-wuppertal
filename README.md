@@ -6,7 +6,8 @@ Schließungen und verkürzte Öffnungszeiten der städtischen Schwimmbäder in W
 
 ## Dateien
 
-- `data/schliessungen.json`: alle Einträge. Nur diese Datei wird bei Änderungen bearbeitet.
+- `data/schliessungen.json`: alle Schließungen
+- `data/oeffnungszeiten.json`: reguläre Öffnungszeiten, Kassenschluss und Ende der Schwimmzeit je Bad
 - `build.py`: erzeugt daraus `schliessungen.ics` und `index.html`
 - `vorlage.html`: Vorlage für die Webseite
 - `schliessungen.ics`: Kalender zum Abonnieren (wird erzeugt)
@@ -81,6 +82,17 @@ Jede Woche wiederkehrend:
 | `bis` | nein | `TT.MM.JJJJ`, `TT.MM.JJJJ HH:MM` oder nur `HH:MM` (gleicher Tag wie `von`). Fehlt es, gilt nur der Tag von `von`. Ohne Uhrzeit ist der ganze Tag gemeint. |
 | `hinweis` | nein | Zusätzliche Information, z. B. der Anlass oder die tatsächlichen Öffnungszeiten |
 | `wiederholung` | nein | `{ "tage": ["Sa", "So"], "bis": "TT.MM.JJJJ" }` |
+
+## Öffnungszeiten ändern
+
+Die regulären Öffnungszeiten stehen in `data/oeffnungszeiten.json`, getrennt nach Schwimmhalle und Sauna, z. B. `"Mi": ["06:45-09:00", "18:00-21:00"]`. Ein leerer Tag (`"Mo": []`) bedeutet geschlossen.
+
+Die Zeiten sind die **Öffnungszeiten des Bades** (Betriebszeiten). Daraus berechnet die Webseite getrennt:
+
+- **Kassenschluss** (letzter Einlass): `kassenschluss_minuten_vorher` Minuten vor Schließung
+- **Ende der Schwimmzeit** (Becken verlassen): `schwimmzeit_ende_minuten_vorher` Minuten vor Schließung
+
+Die Anzeige „Jetzt geöffnet?“ verbindet diese Zeiten mit den Schließungen. Spontane Schließungen fehlen, solange sie nicht eingetragen sind.
 
 Die Beschreibung im Kalender („Von Fr 04.12.2026, 08:00 Uhr bis einschließlich Mo 07.12.2026 geschlossen.“) erzeugt das Skript selbst.
 
