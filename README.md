@@ -2,6 +2,8 @@
 
 Schließungen und verkürzte Öffnungszeiten der städtischen Schwimmbäder in Wuppertal an einem Ort: als Webseite und als Kalender zum Abonnieren.
 
+> **Hinweis:** Dieses Projekt wurde mit Unterstützung von KI gebaut. Auch die Daten werden KI-gestützt und automatisiert aus öffentlichen Quellen erfasst. Sie können daher fehlerhaft oder unvollständig sein. Verbindlich sind die Angaben der Stadt Wuppertal. Alle Angaben ohne Gewähr.
+
 ## Dateien
 
 - `data/schliessungen.json`: alle Einträge. Nur diese Datei wird bei Änderungen bearbeitet.
@@ -82,4 +84,3 @@ Jede Woche wiederkehrend:
 
 Die Beschreibung im Kalender („Von Fr 04.12.2026, 08:00 Uhr bis einschließlich Mo 07.12.2026 geschlossen.“) erzeugt das Skript selbst.
 
-Alle Angaben ohne Gewähr.

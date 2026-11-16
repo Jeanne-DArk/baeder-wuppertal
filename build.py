@@ -171,7 +171,7 @@ def build_ics(eintraege):
     lines = [
         "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Baeder Wuppertal//DE", "CALSCALE:GREGORIAN",
         "METHOD:PUBLISH", "X-WR-CALNAME:Schwimmbäder Wuppertal – Schließungen", "X-WR-TIMEZONE:Europe/Berlin",
-        "X-WR-CALDESC:" + esc("Schließungen und verkürzte Öffnungszeiten der städtischen Schwimmbäder in Wuppertal. Ohne Gewähr."),
+        "X-WR-CALDESC:" + esc("Schließungen und verkürzte Öffnungszeiten der städtischen Schwimmbäder in Wuppertal. KI-gestützt und automatisiert erfasst, daher möglicherweise fehlerhaft oder unvollständig. Verbindlich sind die Angaben der Stadt Wuppertal. Ohne Gewähr."),
         "REFRESH-INTERVAL;VALUE=DURATION:PT1H", "X-PUBLISHED-TTL:PT1H",
         *VTIMEZONE,
     ]
