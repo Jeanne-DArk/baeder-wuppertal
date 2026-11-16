@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schwimmbäder Wuppertal – Schließungen</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 46rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; line-height: 1.5; color: #1a1a1a; background: #fff; }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  .hinweis { color: #555; margin-top: 0; }
+  .abo { background: #eef5fb; border-radius: .5rem; padding: 1rem; margin: 1.5rem 0; }
+  .abo a.knopf { display: inline-block; background: #0b5394; color: #fff; padding: .5rem .9rem; border-radius: .35rem; text-decoration: none; margin: .25rem .5rem .25rem 0; }
+  .abo a.knopf:focus, .abo a.knopf:hover { background: #073763; }
+  code { word-break: break-all; background: #fff; padding: .1rem .3rem; }
+  ul.liste { list-style: none; padding: 0; }
+  ul.liste li { border-left: .35rem solid #c0392b; padding: .5rem .75rem; margin: .6rem 0; background: #fafafa; }
+  ul.liste li.verkuerzt { border-left-color: #e69138; }
+  ul.liste li.laufend { background: #fdecea; }
+  .wann { font-weight: 600; }
+  details { margin-top: 2rem; }
+  footer { margin-top: 3rem; font-size: .9rem; color: #555; }
+</style>
+</head>
+<body>
+<main>
+<h1>Schwimmbäder Wuppertal – Schließungen</h1>
+<p class="hinweis">Schließungen und verkürzte Öffnungszeiten der städtischen Schwimmbäder an einem Ort. Ohne Gewähr.</p>
+
+<section class="abo" aria-labelledby="abo-titel">
+<h2 id="abo-titel">Kalender abonnieren</h2>
+<p>Mit einem Abo erscheinen alle Schließungen automatisch in deinem Handy- oder Computerkalender.</p>
+<p>
+  <a class="knopf" id="abo-webcal" href="schliessungen.ics">Apple- oder Outlook-Kalender</a>
+  <a class="knopf" id="abo-google" href="schliessungen.ics">Google Kalender</a>
+</p>
+<p>Oder diese Adresse in deiner Kalender-App unter „Kalender per URL hinzufügen“ eintragen:<br><code id="abo-url">schliessungen.ics</code></p>
+</section>
+
+<section aria-labelledby="aktuell-titel">
+<h2 id="aktuell-titel">Aktuelle und kommende Schließungen</h2>
+<ul class="liste" id="kommend"><noscript>{{NOSCRIPT}}</noscript></ul>
+</section>
+
+<details>
+<summary>Vergangene Schließungen anzeigen</summary>
+<ul class="liste" id="vergangen"></ul>
+</details>
+</main>
+<footer>
+<p>Ein ehrenamtliches Projekt. Quellen: Seiten der Stadt Wuppertal, Radio Wuppertal, Wuppertaler Rundschau, Westdeutsche Zeitung. Kurzfristige Änderungen erfragst du bei der Stadt unter 0202 563 4488.</p>
+</footer>
+<script>
+const DATEN = {{DATEN}};
+const ics = new URL("schliessungen.ics", location.href);
+const webcal = "webcal://" + ics.host + ics.pathname;
+document.getElementById("abo-webcal").href = webcal;
+document.getElementById("abo-google").href = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcal);
+document.getElementById("abo-url").textContent = ics.href;
+
+function parse(s) {
+  if (s.length === 8) return new Date(+s.slice(0,4), +s.slice(4,6)-1, +s.slice(6,8));
+  return new Date(+s.slice(0,4), +s.slice(4,6)-1, +s.slice(6,8), +s.slice(9,11), +s.slice(11,13));
+}
+function ende(e) {
+  if (e.wiederholung) {
+    const m = e.wiederholung.match(/UNTIL=(\d{8})/);
+    return m ? parse(m[1]) : new Date(8640000000000000);
+  }
+  return parse(e.ende);
+}
+const jetzt = new Date();
+const kommend = DATEN.filter(e => ende(e) > jetzt).sort((a,b) => a.start.localeCompare(b.start));
+const vergangen = DATEN.filter(e => ende(e) <= jetzt).sort((a,b) => b.start.localeCompare(a.start));
+function render(ziel, liste) {
+  const ul = document.getElementById(ziel);
+  ul.innerHTML = "";
+  if (!liste.length) { ul.innerHTML = "<li>Derzeit sind keine Schließungen bekannt.</li>"; return; }
+  for (const e of liste) {
+    const li = document.createElement("li");
+    if (e.status !== "geschlossen") li.classList.add("verkuerzt");
+    if (parse(e.start) <= jetzt && ende(e) > jetzt) li.classList.add("laufend");
+    const t = document.createElement("span");
+    t.className = "wann";
+    t.textContent = e.bad + ": " + e.status + " (" + e.grund + ")";
+    const d = document.createElement("div");
+    d.textContent = e.beschreibung;
+    li.append(t, d);
+    ul.append(li);
+  }
+}
+render("kommend", kommend);
+render("vergangen", vergangen);
+</script>
+</body>
+</html>

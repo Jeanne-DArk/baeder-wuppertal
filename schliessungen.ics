@@ -28,7 +28,7 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:20260101-alle-hallenbäder-feiertag--neujahr@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260101
 DTEND;VALUE=DATE:20260102
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Neujahr)
@@ -39,7 +39,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260119t080000-gartenhallenbad-langerfeld-veranstaltung@baeder-wuppert
  al
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260119T080000
 DTEND;TZID=Europe/Berlin:20260119T150000
 SUMMARY:Gartenhallenbad Langerfeld: verkürzt geöffnet (Veranstaltung)
@@ -51,7 +51,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260216-alle-hallenbäder-feiertag--rosenmontag@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260216
 DTEND;VALUE=DATE:20260217
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Rosenmontag)
@@ -61,7 +61,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260221-schwimmsportleistungszentrum-wettkampf@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260221
 DTEND;VALUE=DATE:20260223
 SUMMARY:Schwimmsportleistungszentrum: geschlossen (Wettkampf)
@@ -72,19 +72,19 @@ DESCRIPTION:Von Sa 21.02.2026 bis einschließlich So 22.02.2026 geschlossen
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:20260223t063000-schwimmoper-wartung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
-DTSTART;TZID=Europe/Berlin:20260223T063000
+UID:20260223t000000-schwimmoper-wartung@baeder-wuppertal
+DTSTAMP:20261116T090455Z
+DTSTART;TZID=Europe/Berlin:20260223T000000
 DTEND;TZID=Europe/Berlin:20260224T140000
 SUMMARY:Schwimmoper: geschlossen (Wartung)
 LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
-DESCRIPTION:Am Mo 23.02.2026 ganztägig und am Di 24.02.2026 bis 14:00 Uhr 
- geschlossen. Reinigung der Schwallwasserbehälter.
+DESCRIPTION:Von Mo 23.02.2026 ganztägig bis Di 24.02.2026\, 14:00 Uhr gesc
+ hlossen. Reinigung der Schwallwasserbehälter.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260309-stadtbad-uellendahl-veranstaltung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260309
 DTEND;VALUE=DATE:20260314
 SUMMARY:Stadtbad Uellendahl: geschlossen (Veranstaltung)
@@ -96,7 +96,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260321t150000-schwimmoper-personalmangel@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260321T150000
 DTEND;TZID=Europe/Berlin:20260321T180000
 SUMMARY:Schwimmoper: verkürzt geöffnet (Personalmangel)
@@ -106,7 +106,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260322t150000-schwimmoper-personalmangel@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260322T150000
 DTEND;TZID=Europe/Berlin:20260322T180000
 SUMMARY:Schwimmoper: verkürzt geöffnet (Personalmangel)
@@ -116,7 +116,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260328-gartenhallenbad-langerfeld-wartung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260328
 DTEND;VALUE=DATE:20260527
 SUMMARY:Gartenhallenbad Langerfeld: geschlossen (Wartung)
@@ -128,7 +128,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260403-alle-hallenbäder-feiertag--karfreitag@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260403
 DTEND;VALUE=DATE:20260404
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Karfreitag)
@@ -138,7 +138,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260406-alle-hallenbäder-feiertag--ostermontag@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260406
 DTEND;VALUE=DATE:20260407
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Ostermontag)
@@ -148,7 +148,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260418-schwimmsportleistungszentrum-veranstaltung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260418
 DTEND;VALUE=DATE:20260420
 SUMMARY:Schwimmsportleistungszentrum: geschlossen (Veranstaltung)
@@ -161,7 +161,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260501-hallenbäder-feiertag--maifeiertag@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260501
 DTEND;VALUE=DATE:20260502
 SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Maifeiertag)
@@ -172,19 +172,20 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260509t150000-schwimmoper-personaleinsatz-im-freibad@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260509T150000
 DTEND;TZID=Europe/Berlin:20260509T180000
 RRULE:FREQ=WEEKLY;BYDAY=SA,SU;UNTIL=20260712T220000Z
 SUMMARY:Schwimmoper: verkürzt geöffnet (Personaleinsatz im Freibad)
 LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
-DESCRIPTION:Während der Freibadsaison samstags und sonntags nur von 9:00 b
- is 15:00 Uhr geöffnet (Schwimmhalle\, Sauna und Fitness).
+DESCRIPTION:Samstags und sonntags vom 09.05.2026 bis 12.07.2026: Nur von 9:
+ 00 bis 15:00 Uhr geöffnet (Schwimmhalle\, Sauna und Fitness)\, weil Perso
+ nal im Freibad eingesetzt wird.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260514-hallenbäder-feiertag--christi-himmelfahrt@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260514
 DTEND;VALUE=DATE:20260515
 SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Christi Himmelfah
@@ -196,7 +197,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260525-hallenbäder-feiertag--pfingstmontag@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260525
 DTEND;VALUE=DATE:20260526
 SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Pfingstmontag)
@@ -209,7 +210,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260526t140000-schwimmoper-personaleinsatz-im-freibad@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260526T140000
 DTEND;TZID=Europe/Berlin:20260526T220000
 SUMMARY:Schwimmoper: verkürzt geöffnet (Personaleinsatz im Freibad)
@@ -220,7 +221,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260527t140000-schwimmoper-personaleinsatz-im-freibad@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260527T140000
 DTEND;TZID=Europe/Berlin:20260527T220000
 SUMMARY:Schwimmoper: verkürzt geöffnet (Personaleinsatz im Freibad)
@@ -232,7 +233,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260527t180000-schwimmsportleistungszentrum-personaleinsatz-im-freibad
  @baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260527T180000
 DTEND;TZID=Europe/Berlin:20260527T210000
 SUMMARY:Schwimmsportleistungszentrum: geschlossen (Personaleinsatz im Freib
@@ -245,7 +246,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260528-stadtbad-uellendahl-personaleinsatz-im-freibad@baeder-wupperta
  l
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260528
 DTEND;VALUE=DATE:20260529
 SUMMARY:Stadtbad Uellendahl: geschlossen (Personaleinsatz im Freibad)
@@ -255,7 +256,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260603t120000-freibad-mählersbeck-wetter@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260603T120000
 DTEND;TZID=Europe/Berlin:20260603T190000
 SUMMARY:Freibad Mählersbeck: verkürzt geöffnet (Wetter)
@@ -265,7 +266,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260604-freibad-mählersbeck-wetter@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260604
 DTEND;VALUE=DATE:20260605
 SUMMARY:Freibad Mählersbeck: geschlossen (Wetter)
@@ -275,7 +276,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260604-hallenbäder-feiertag--fronleichnam@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260604
 DTEND;VALUE=DATE:20260605
 SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Fronleichnam)
@@ -287,7 +288,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260605t120000-freibad-mählersbeck-wetter@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260605T120000
 DTEND;TZID=Europe/Berlin:20260605T190000
 SUMMARY:Freibad Mählersbeck: verkürzt geöffnet (Wetter)
@@ -297,7 +298,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260606-freibad-mählersbeck-wetter@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260606
 DTEND;VALUE=DATE:20260609
 SUMMARY:Freibad Mählersbeck: geschlossen (Wetter)
@@ -308,7 +309,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260629-hallenbäder-veranstaltung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260629
 DTEND;VALUE=DATE:20260704
 SUMMARY:Hallenbäder: eingeschränkt geöffnet (Veranstaltung)
@@ -320,7 +321,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260704-schwimmsportleistungszentrum-wartung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260704
 DTEND;VALUE=DATE:20260902
 SUMMARY:Schwimmsportleistungszentrum: geschlossen (Wartung)
@@ -333,7 +334,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260714t080000-gartenhallenbad-langerfeld-veranstaltung@baeder-wuppert
  al
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260714T080000
 DTEND;TZID=Europe/Berlin:20260714T140000
 SUMMARY:Gartenhallenbad Langerfeld: verkürzt geöffnet (Veranstaltung)
@@ -344,7 +345,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260716-stadtbad-uellendahl-veranstaltung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260716
 DTEND;VALUE=DATE:20260717
 SUMMARY:Stadtbad Uellendahl: geschlossen (Veranstaltung)
@@ -354,7 +355,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260718-schwimmoper-wartung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260718
 DTEND;VALUE=DATE:20260831
 SUMMARY:Schwimmoper: geschlossen (Wartung)
@@ -366,7 +367,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260808-gartenhallenbad-cronenberg-personalmangel-und-personaleinsatz-
  im-freibad@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260808
 DTEND;VALUE=DATE:20260810
 SUMMARY:Gartenhallenbad Cronenberg: geschlossen (Personalmangel und Persona
@@ -378,7 +379,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260912-schwimmsportleistungszentrum-veranstaltung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20260912
 DTEND;VALUE=DATE:20260914
 SUMMARY:Schwimmsportleistungszentrum: geschlossen (Veranstaltung)
@@ -390,7 +391,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20260924t180000-schwimmoper-wettkampf@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20260924T180000
 DTEND;TZID=Europe/Berlin:20260928T200000
 SUMMARY:Schwimmoper: geschlossen (Wettkampf)
@@ -401,7 +402,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261003-gartenhallenbad-cronenberg-wartung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261116
 SUMMARY:Gartenhallenbad Cronenberg: geschlossen (Wartung)
@@ -413,7 +414,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261003-hallenbäder-feiertag--tag-der-deutschen-einheit@baeder-wupper
  tal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20261003
 DTEND;VALUE=DATE:20261004
 SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Tag der Deutschen
@@ -425,7 +426,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261009t180000-schwimmoper-wettkampf@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20261009T180000
 DTEND;TZID=Europe/Berlin:20261013T000000
 SUMMARY:Schwimmoper: geschlossen (Wettkampf)
@@ -437,18 +438,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261019-stadtbad-uellendahl-sanierung@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20280420
 SUMMARY:Stadtbad Uellendahl: geschlossen (Sanierung)
 LOCATION:Stadtbad Uellendahl\, Röttgen 149\, 42109 Wuppertal
-DESCRIPTION:Ab Mo 19.10.2026 für voraussichtlich eineinhalb Jahre geschlos
- sen. Das Ende des Eintrags ist geschätzt.
+DESCRIPTION:Von Mo 19.10.2026 bis einschließlich Mi 19.04.2028 geschlossen
+ . Voraussichtlich für eineinhalb Jahre\, Ende laut Stadt im 2. Quartal 20
+ 28. Das Enddatum dieses Eintrags ist geschätzt.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261029t180000-schwimmoper-wettkampf@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20261029T180000
 DTEND;TZID=Europe/Berlin:20261102T000000
 SUMMARY:Schwimmoper: geschlossen (Wettkampf)
@@ -459,7 +461,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261101-alle-hallenbäder-feiertag--allerheiligen@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20261101
 DTEND;VALUE=DATE:20261102
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Allerheiligen)
@@ -471,7 +473,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261110t080000-schwimmoper-wettkampf@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20261110T080000
 DTEND;TZID=Europe/Berlin:20261117T140000
 SUMMARY:Schwimmoper: geschlossen (Wettkampf)
@@ -482,7 +484,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261119t180000-schwimmoper-wettkampf@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20261119T180000
 DTEND;TZID=Europe/Berlin:20261123T000000
 SUMMARY:Schwimmoper: geschlossen (Wettkampf)
@@ -493,7 +495,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261204t080000-schwimmoper-wettkampf@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;TZID=Europe/Berlin:20261204T080000
 DTEND;TZID=Europe/Berlin:20261208T000000
 SUMMARY:Schwimmoper: geschlossen (Wettkampf)
@@ -504,7 +506,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261224-alle-hallenbäder-feiertag--heiligabend@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20261224
 DTEND;VALUE=DATE:20261225
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Heiligabend)
@@ -514,7 +516,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261225-alle-hallenbäder-feiertag--1--weihnachtstag@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20261225
 DTEND;VALUE=DATE:20261226
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: 1. Weihnachtstag)
@@ -524,7 +526,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261226-alle-hallenbäder-feiertag--2--weihnachtstag@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20261226
 DTEND;VALUE=DATE:20261227
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: 2. Weihnachtstag)
@@ -534,7 +536,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20261231-alle-hallenbäder-feiertag--silvester@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Silvester)
@@ -544,7 +546,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:20270101-alle-hallenbäder-feiertag--neujahr@baeder-wuppertal
-DTSTAMP:20261116T084645Z
+DTSTAMP:20261116T090455Z
 DTSTART;VALUE=DATE:20270101
 DTEND;VALUE=DATE:20270102
 SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Neujahr)

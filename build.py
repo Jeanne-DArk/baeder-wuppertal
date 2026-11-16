@@ -1,10 +1,16 @@
 """Erzeugt schliessungen.ics und index.html aus data/schliessungen.json.
 
 Aufruf:  python3 build.py
+
+Format eines Eintrags (siehe README.md):
+  {"bad": "Schwimmoper", "status": "geschlossen", "grund": "Wettkampf",
+   "von": "04.12.2026 08:00", "bis": "07.12.2026", "hinweis": "DMSJ-Bundesfinale."}
 """
 import html
 import json
-from datetime import datetime, timezone
+import re
+import sys
+from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -17,7 +23,117 @@ ADRESSEN = {
     "Schwimmsportleistungszentrum": "Schwimmsportleistungszentrum, Küllenhahner Straße 130, 42349 Wuppertal",
     "Stadtbad Uellendahl": "Stadtbad Uellendahl, Röttgen 149, 42109 Wuppertal",
     "Freibad Mählersbeck": "Freibad Mählersbeck, Mählersbeck 71, 42279 Wuppertal",
+    "Alle Hallenbäder": "Wuppertal",
+    "Hallenbäder": "Wuppertal",
 }
+STATUS = ("geschlossen", "verkürzt geöffnet", "eingeschränkt geöffnet")
+WOCHENTAGE = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+TAGNAMEN = {"Mo": "montags", "Di": "dienstags", "Mi": "mittwochs", "Do": "donnerstags", "Fr": "freitags", "Sa": "samstags", "So": "sonntags"}
+ICS_TAGE = {"Mo": "MO", "Di": "TU", "Mi": "WE", "Do": "TH", "Fr": "FR", "Sa": "SA", "So": "SU"}
+
+RE_DATUM = re.compile(r"^(\d{1,2})\.(\d{1,2})\.(\d{4})$")
+RE_DATUM_ZEIT = re.compile(r"^(\d{1,2})\.(\d{1,2})\.(\d{4}),?\s+(\d{1,2})[:.](\d{2})(?:\s*Uhr)?$")
+RE_ZEIT = re.compile(r"^(\d{1,2})[:.](\d{2})(?:\s*Uhr)?$")
+
+
+class Eingabefehler(Exception):
+    pass
+
+
+def lies_zeitpunkt(text, nr, feld, bezugstag=None):
+    """'04.12.2026' -> (date, None); '04.12.2026 08:00' -> (date, time); '14:00' -> (bezugstag, time)."""
+    t = str(text).strip()
+    try:
+        if m := RE_DATUM_ZEIT.match(t):
+            tag, mon, jahr, h, mi = map(int, m.groups())
+            return date(jahr, mon, tag), time(h, mi)
+        if m := RE_DATUM.match(t):
+            tag, mon, jahr = map(int, m.groups())
+            return date(jahr, mon, tag), None
+        if (m := RE_ZEIT.match(t)) and bezugstag:
+            h, mi = map(int, m.groups())
+            return bezugstag, time(h, mi)
+    except ValueError:
+        raise Eingabefehler(f"Eintrag {nr}: „{feld}“ = „{t}“ ist kein gültiges Datum oder keine gültige Uhrzeit.")
+    raise Eingabefehler(
+        f"Eintrag {nr}: „{feld}“ = „{t}“ nicht verstanden. Erlaubt: „TT.MM.JJJJ“ oder „TT.MM.JJJJ HH:MM“"
+        + (" oder nur „HH:MM“ (gleicher Tag wie „von“)." if feld == "bis" else ".")
+    )
+
+
+def tag_text(d):
+    return f"{WOCHENTAGE[d.weekday()]} {d:%d.%m.%Y}"
+
+
+def zeit_text(t):
+    return f"{t:%H:%M} Uhr"
+
+
+def normalisiere(e, nr):
+    """Wandelt einen von Hand geschriebenen Eintrag in das interne Format um."""
+    for feld in ("bad", "status", "grund", "von"):
+        if not str(e.get(feld, "")).strip():
+            raise Eingabefehler(f"Eintrag {nr}: Feld „{feld}“ fehlt.")
+    if e["bad"] not in ADRESSEN:
+        raise Eingabefehler(f"Eintrag {nr}: Bad „{e['bad']}“ unbekannt. Erlaubt: {', '.join(ADRESSEN)}.")
+    if e["status"] not in STATUS:
+        raise Eingabefehler(f"Eintrag {nr}: Status „{e['status']}“ unbekannt. Erlaubt: {', '.join(STATUS)}.")
+
+    von_tag, von_zeit = lies_zeitpunkt(e["von"], nr, "von")
+    bis_tag, bis_zeit = lies_zeitpunkt(e.get("bis") or e["von"].split()[0], nr, "bis", bezugstag=von_tag)
+    hinweis = str(e.get("hinweis", "")).strip()
+
+    ganztaegig = von_zeit is None and bis_zeit is None
+    if ganztaegig:
+        start_dt, ende_dt = von_tag, bis_tag + timedelta(days=1)
+        start, ende = f"{start_dt:%Y%m%d}", f"{ende_dt:%Y%m%d}"
+        zeitraum = (f"Am {tag_text(von_tag)}" if von_tag == bis_tag
+                    else f"Von {tag_text(von_tag)} bis einschließlich {tag_text(bis_tag)}")
+    else:
+        start_dt = datetime.combine(von_tag, von_zeit or time(0, 0))
+        if bis_zeit is None:  # ganzer letzter Tag
+            ende_dt = datetime.combine(bis_tag + timedelta(days=1), time(0, 0))
+        else:
+            ende_dt = datetime.combine(bis_tag, bis_zeit)
+        start, ende = f"{start_dt:%Y%m%dT%H%M%S}", f"{ende_dt:%Y%m%dT%H%M%S}"
+        if von_tag == bis_tag and von_zeit and bis_zeit:
+            zeitraum = f"Am {tag_text(von_tag)} von {von_zeit:%H:%M} bis {bis_zeit:%H:%M} Uhr"
+        else:
+            links = f"{tag_text(von_tag)}, {zeit_text(von_zeit)}" if von_zeit else f"{tag_text(von_tag)} ganztägig"
+            rechts = f"{tag_text(bis_tag)}, {zeit_text(bis_zeit)}" if bis_zeit else f"einschließlich {tag_text(bis_tag)}"
+            zeitraum = f"Von {links} bis {rechts}"
+    if ende_dt <= start_dt:
+        raise Eingabefehler(f"Eintrag {nr}: „bis“ liegt vor „von“.")
+
+    wiederholung = None
+    w = e.get("wiederholung")
+    if w:
+        tage = w.get("tage") or []
+        if not tage or any(t not in ICS_TAGE for t in tage):
+            raise Eingabefehler(f"Eintrag {nr}: „wiederholung.tage“ muss eine Liste wie [\"Sa\", \"So\"] sein.")
+        bis_w, _ = lies_zeitpunkt(w.get("bis", ""), nr, "wiederholung.bis")
+        until = datetime.combine(bis_w + timedelta(days=1), time(0, 0)) - timedelta(hours=2)  # Ende des Tages, UTC
+        wiederholung = f"FREQ=WEEKLY;BYDAY={','.join(ICS_TAGE[t] for t in tage)};UNTIL={until:%Y%m%dT%H%M%S}Z"
+        namen = [TAGNAMEN[t] for t in tage]
+        aufzaehlung = namen[0] if len(namen) == 1 else ", ".join(namen[:-1]) + " und " + namen[-1]
+        zeitraum = f"{aufzaehlung[0].upper()}{aufzaehlung[1:]} vom {von_tag:%d.%m.%Y} bis {bis_w:%d.%m.%Y}"
+
+    if e["status"] != "geschlossen" and not wiederholung:
+        # Bei verkürzter Öffnung zählt der Tag, nicht der weggefallene Zeitraum.
+        zeitraum = (f"Am {tag_text(von_tag)}" if von_tag == bis_tag
+                    else f"Von {tag_text(von_tag)} bis einschließlich {tag_text(bis_tag)}")
+
+    if e["status"] == "geschlossen":
+        beschreibung = f"{zeitraum} geschlossen." + (f" {hinweis}" if hinweis else "")
+    else:
+        beschreibung = f"{zeitraum}: {hinweis}" if hinweis else f"{zeitraum} {e['status']}."
+
+    return {
+        "bad": e["bad"], "status": e["status"], "grund": e["grund"],
+        "start": start, "ende": ende, "ganztaegig": ganztaegig,
+        "beschreibung": beschreibung, "wiederholung": wiederholung,
+    }
+
 
 VTIMEZONE = [
     "BEGIN:VTIMEZONE", "TZID:Europe/Berlin",
@@ -62,7 +178,8 @@ def build_ics(eintraege):
     seen = set()
     for e in eintraege:
         u = uid(e)
-        assert u not in seen, f"doppelte UID: {u}"
+        if u in seen:
+            raise Eingabefehler(f"Doppelter Eintrag: {e['bad']}, {e['grund']}, Beginn {e['start']}.")
         seen.add(u)
         if e["ganztaegig"]:
             start, ende = f"DTSTART;VALUE=DATE:{e['start']}", f"DTEND;VALUE=DATE:{e['ende']}"
@@ -87,108 +204,22 @@ def build_html(eintraege):
         f"<li><strong>{html.escape(e['bad'])}: {html.escape(e['status'])} ({html.escape(e['grund'])})</strong><br>{html.escape(e['beschreibung'])}</li>"
         for e in eintraege
     )
-    seite = f"""<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Schwimmbäder Wuppertal – Schließungen</title>
-<style>
-  body {{ font-family: system-ui, sans-serif; max-width: 46rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; line-height: 1.5; color: #1a1a1a; background: #fff; }}
-  h1 {{ font-size: 1.6rem; margin-bottom: .25rem; }}
-  .hinweis {{ color: #555; margin-top: 0; }}
-  .abo {{ background: #eef5fb; border-radius: .5rem; padding: 1rem; margin: 1.5rem 0; }}
-  .abo a.knopf {{ display: inline-block; background: #0b5394; color: #fff; padding: .5rem .9rem; border-radius: .35rem; text-decoration: none; margin: .25rem .5rem .25rem 0; }}
-  .abo a.knopf:focus, .abo a.knopf:hover {{ background: #073763; }}
-  code {{ word-break: break-all; background: #fff; padding: .1rem .3rem; }}
-  ul.liste {{ list-style: none; padding: 0; }}
-  ul.liste li {{ border-left: .35rem solid #c0392b; padding: .5rem .75rem; margin: .6rem 0; background: #fafafa; }}
-  ul.liste li.verkuerzt {{ border-left-color: #e69138; }}
-  ul.liste li.laufend {{ background: #fdecea; }}
-  .wann {{ font-weight: 600; }}
-  details {{ margin-top: 2rem; }}
-  footer {{ margin-top: 3rem; font-size: .9rem; color: #555; }}
-</style>
-</head>
-<body>
-<main>
-<h1>Schwimmbäder Wuppertal – Schließungen</h1>
-<p class="hinweis">Schließungen und verkürzte Öffnungszeiten der städtischen Schwimmbäder an einem Ort. Ohne Gewähr.</p>
-
-<section class="abo" aria-labelledby="abo-titel">
-<h2 id="abo-titel">Kalender abonnieren</h2>
-<p>Mit einem Abo erscheinen alle Schließungen automatisch in deinem Handy- oder Computerkalender.</p>
-<p>
-  <a class="knopf" id="abo-webcal" href="schliessungen.ics">Apple- oder Outlook-Kalender</a>
-  <a class="knopf" id="abo-google" href="schliessungen.ics">Google Kalender</a>
-</p>
-<p>Oder diese Adresse in deiner Kalender-App unter „Kalender per URL hinzufügen“ eintragen:<br><code id="abo-url">schliessungen.ics</code></p>
-</section>
-
-<section aria-labelledby="aktuell-titel">
-<h2 id="aktuell-titel">Aktuelle und kommende Schließungen</h2>
-<ul class="liste" id="kommend"><noscript>{noscript}</noscript></ul>
-</section>
-
-<details>
-<summary>Vergangene Schließungen anzeigen</summary>
-<ul class="liste" id="vergangen"></ul>
-</details>
-</main>
-<footer>
-<p>Ein ehrenamtliches Projekt. Quellen: Seiten der Stadt Wuppertal, Radio Wuppertal, Wuppertaler Rundschau, Westdeutsche Zeitung. Kurzfristige Änderungen erfragst du bei der Stadt unter 0202 563 4488.</p>
-</footer>
-<script>
-const DATEN = {daten};
-const ics = new URL("schliessungen.ics", location.href);
-const webcal = "webcal://" + ics.host + ics.pathname;
-document.getElementById("abo-webcal").href = webcal;
-document.getElementById("abo-google").href = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcal);
-document.getElementById("abo-url").textContent = ics.href;
-
-function parse(s) {{
-  if (s.length === 8) return new Date(+s.slice(0,4), +s.slice(4,6)-1, +s.slice(6,8));
-  return new Date(+s.slice(0,4), +s.slice(4,6)-1, +s.slice(6,8), +s.slice(9,11), +s.slice(11,13));
-}}
-function ende(e) {{
-  if (e.wiederholung) {{
-    const m = e.wiederholung.match(/UNTIL=(\\d{{8}})/);
-    return m ? parse(m[1]) : new Date(8640000000000000);
-  }}
-  return parse(e.ende);
-}}
-const jetzt = new Date();
-const kommend = DATEN.filter(e => ende(e) > jetzt).sort((a,b) => a.start.localeCompare(b.start));
-const vergangen = DATEN.filter(e => ende(e) <= jetzt).sort((a,b) => b.start.localeCompare(a.start));
-function render(ziel, liste) {{
-  const ul = document.getElementById(ziel);
-  ul.innerHTML = "";
-  if (!liste.length) {{ ul.innerHTML = "<li>Derzeit sind keine Schließungen bekannt.</li>"; return; }}
-  for (const e of liste) {{
-    const li = document.createElement("li");
-    if (e.status !== "geschlossen") li.classList.add("verkuerzt");
-    if (parse(e.start) <= jetzt && ende(e) > jetzt) li.classList.add("laufend");
-    const t = document.createElement("span");
-    t.className = "wann";
-    t.textContent = e.bad + ": " + e.status + " (" + e.grund + ")";
-    const d = document.createElement("div");
-    d.textContent = e.beschreibung;
-    li.append(t, d);
-    ul.append(li);
-  }}
-}}
-render("kommend", kommend);
-render("vergangen", vergangen);
-</script>
-</body>
-</html>
-"""
+    vorlage = (ROOT / "vorlage.html").read_text(encoding="utf-8")
+    seite = vorlage.replace("{{DATEN}}", daten).replace("{{NOSCRIPT}}", noscript)
     (ROOT / "index.html").write_text(seite, encoding="utf-8")
 
 
-if __name__ == "__main__":
-    eintraege = json.loads(DATA.read_text(encoding="utf-8"))
-    eintraege.sort(key=lambda e: e["start"])
-    build_ics(eintraege)
-    build_html(eintraege)
+def main():
+    roh = json.loads(DATA.read_text(encoding="utf-8"))
+    try:
+        eintraege = [normalisiere(e, nr) for nr, e in enumerate(roh, start=1)]
+        eintraege.sort(key=lambda e: e["start"])
+        build_ics(eintraege)
+        build_html(eintraege)
+    except Eingabefehler as err:
+        sys.exit(f"Fehler: {err}")
     print(f"{len(eintraege)} Einträge geschrieben.")
+
+
+if __name__ == "__main__":
+    main()
