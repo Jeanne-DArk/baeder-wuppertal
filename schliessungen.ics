@@ -1,0 +1,555 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Baeder Wuppertal//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Schwimmbäder Wuppertal – Schließungen
+X-WR-TIMEZONE:Europe/Berlin
+X-WR-CALDESC:Schließungen und verkürzte Öffnungszeiten der städtischen 
+ Schwimmbäder in Wuppertal. Ohne Gewähr.
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20260101-alle-hallenbäder-feiertag--neujahr@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260101
+DTEND;VALUE=DATE:20260102
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Neujahr)
+LOCATION:Wuppertal
+DESCRIPTION:Am Do 01.01.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260119t080000-gartenhallenbad-langerfeld-veranstaltung@baeder-wuppert
+ al
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260119T080000
+DTEND;TZID=Europe/Berlin:20260119T150000
+SUMMARY:Gartenhallenbad Langerfeld: verkürzt geöffnet (Veranstaltung)
+LOCATION:Gartenhallenbad Langerfeld\, Am Timpen 51\, 42389 Wuppertal
+DESCRIPTION:Am Mo 19.01.2026: Schwimmfest der Förderschulen des Regierungs
+ bezirks Düsseldorf. Schwimmhalle nur von 6:45 bis 8:00 Uhr geöffnet\, Sa
+ una wie gewohnt.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260216-alle-hallenbäder-feiertag--rosenmontag@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260216
+DTEND;VALUE=DATE:20260217
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Rosenmontag)
+LOCATION:Wuppertal
+DESCRIPTION:Am Mo 16.02.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260221-schwimmsportleistungszentrum-wettkampf@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260221
+DTEND;VALUE=DATE:20260223
+SUMMARY:Schwimmsportleistungszentrum: geschlossen (Wettkampf)
+LOCATION:Schwimmsportleistungszentrum\, Küllenhahner Straße 130\, 42349 W
+ uppertal
+DESCRIPTION:Von Sa 21.02.2026 bis einschließlich So 22.02.2026 geschlossen
+ . Schwimmfest des SV Bayer Wuppertal.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260223t063000-schwimmoper-wartung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260223T063000
+DTEND;TZID=Europe/Berlin:20260224T140000
+SUMMARY:Schwimmoper: geschlossen (Wartung)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Am Mo 23.02.2026 ganztägig und am Di 24.02.2026 bis 14:00 Uhr 
+ geschlossen. Reinigung der Schwallwasserbehälter.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260309-stadtbad-uellendahl-veranstaltung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260309
+DTEND;VALUE=DATE:20260314
+SUMMARY:Stadtbad Uellendahl: geschlossen (Veranstaltung)
+LOCATION:Stadtbad Uellendahl\, Röttgen 149\, 42109 Wuppertal
+DESCRIPTION:Von Mo 09.03.2026 bis einschließlich Fr 13.03.2026 geschlossen
+ . Praktische Zwischenprüfung für angehende Fachangestellte für Bäderbe
+ triebe.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260321t150000-schwimmoper-personalmangel@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260321T150000
+DTEND;TZID=Europe/Berlin:20260321T180000
+SUMMARY:Schwimmoper: verkürzt geöffnet (Personalmangel)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Am Sa 21.03.2026: Geöffnet nur von 9:00 bis 15:00 Uhr.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260322t150000-schwimmoper-personalmangel@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260322T150000
+DTEND;TZID=Europe/Berlin:20260322T180000
+SUMMARY:Schwimmoper: verkürzt geöffnet (Personalmangel)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Am So 22.03.2026: Geöffnet nur von 9:00 bis 15:00 Uhr.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260328-gartenhallenbad-langerfeld-wartung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260328
+DTEND;VALUE=DATE:20260527
+SUMMARY:Gartenhallenbad Langerfeld: geschlossen (Wartung)
+LOCATION:Gartenhallenbad Langerfeld\, Am Timpen 51\, 42389 Wuppertal
+DESCRIPTION:Von Sa 28.03.2026 bis einschließlich Di 26.05.2026 geschlossen
+ . Ursprünglich bis 17.05. angekündigt\, dann bis 24.05. verlängert. Wie
+ dereröffnung am 27.05.2026.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260403-alle-hallenbäder-feiertag--karfreitag@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260403
+DTEND;VALUE=DATE:20260404
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Karfreitag)
+LOCATION:Wuppertal
+DESCRIPTION:Am Fr 03.04.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260406-alle-hallenbäder-feiertag--ostermontag@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260406
+DTEND;VALUE=DATE:20260407
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Ostermontag)
+LOCATION:Wuppertal
+DESCRIPTION:Am Mo 06.04.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260418-schwimmsportleistungszentrum-veranstaltung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260418
+DTEND;VALUE=DATE:20260420
+SUMMARY:Schwimmsportleistungszentrum: geschlossen (Veranstaltung)
+LOCATION:Schwimmsportleistungszentrum\, Küllenhahner Straße 130\, 42349 W
+ uppertal
+DESCRIPTION:Von Sa 18.04.2026 bis einschließlich So 19.04.2026 geschlossen
+ . 24-Stunden-Schwimmen ab Sa 13:00 Uhr. Zutritt nur mit Startkarte des Ver
+ anstalters.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260501-hallenbäder-feiertag--maifeiertag@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260502
+SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Maifeiertag)
+LOCATION:Wuppertal
+DESCRIPTION:Am Fr 01.05.2026: Nur das Gartenhallenbad Cronenberg ist von 8:
+ 30 bis 15:00 Uhr geöffnet\, alle anderen Hallenbäder sind geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260509t150000-schwimmoper-personaleinsatz-im-freibad@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260509T150000
+DTEND;TZID=Europe/Berlin:20260509T180000
+RRULE:FREQ=WEEKLY;BYDAY=SA,SU;UNTIL=20260712T220000Z
+SUMMARY:Schwimmoper: verkürzt geöffnet (Personaleinsatz im Freibad)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Während der Freibadsaison samstags und sonntags nur von 9:00 b
+ is 15:00 Uhr geöffnet (Schwimmhalle\, Sauna und Fitness).
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260514-hallenbäder-feiertag--christi-himmelfahrt@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260514
+DTEND;VALUE=DATE:20260515
+SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Christi Himmelfah
+ rt)
+LOCATION:Wuppertal
+DESCRIPTION:Am Do 14.05.2026: Nur das Gartenhallenbad Cronenberg ist von 8:
+ 30 bis 15:00 Uhr geöffnet\, alle anderen Hallenbäder sind geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260525-hallenbäder-feiertag--pfingstmontag@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260525
+DTEND;VALUE=DATE:20260526
+SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Pfingstmontag)
+LOCATION:Wuppertal
+DESCRIPTION:Am Mo 25.05.2026: Nur das Gartenhallenbad Cronenberg ist von 8:
+ 30 bis 15:00 Uhr geöffnet\, alle anderen Hallenbäder sind geschlossen. L
+ aut Feiertagsregelung wäre auch Langerfeld geöffnet gewesen\, das Bad wa
+ r aber wegen Wartung geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260526t140000-schwimmoper-personaleinsatz-im-freibad@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260526T140000
+DTEND;TZID=Europe/Berlin:20260526T220000
+SUMMARY:Schwimmoper: verkürzt geöffnet (Personaleinsatz im Freibad)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Am Di 26.05.2026: Schwimmhalle und Fitness nur bis 14:00 Uhr ge
+ öffnet\, Sauna ganztägig geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260527t140000-schwimmoper-personaleinsatz-im-freibad@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260527T140000
+DTEND;TZID=Europe/Berlin:20260527T220000
+SUMMARY:Schwimmoper: verkürzt geöffnet (Personaleinsatz im Freibad)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Am Mi 27.05.2026: Schwimmhalle und Fitness nur bis 14:00 Uhr ge
+ öffnet\, Sauna ganztägig geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260527t180000-schwimmsportleistungszentrum-personaleinsatz-im-freibad
+ @baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260527T180000
+DTEND;TZID=Europe/Berlin:20260527T210000
+SUMMARY:Schwimmsportleistungszentrum: geschlossen (Personaleinsatz im Freib
+ ad)
+LOCATION:Schwimmsportleistungszentrum\, Küllenhahner Straße 130\, 42349 W
+ uppertal
+DESCRIPTION:Am Mi 27.05.2026 von 18:00 bis 21:00 Uhr geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260528-stadtbad-uellendahl-personaleinsatz-im-freibad@baeder-wupperta
+ l
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260528
+DTEND;VALUE=DATE:20260529
+SUMMARY:Stadtbad Uellendahl: geschlossen (Personaleinsatz im Freibad)
+LOCATION:Stadtbad Uellendahl\, Röttgen 149\, 42109 Wuppertal
+DESCRIPTION:Am Do 28.05.2026 geschlossen. Kein öffentlicher Badebetrieb.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260603t120000-freibad-mählersbeck-wetter@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260603T120000
+DTEND;TZID=Europe/Berlin:20260603T190000
+SUMMARY:Freibad Mählersbeck: verkürzt geöffnet (Wetter)
+LOCATION:Freibad Mählersbeck\, Mählersbeck 71\, 42279 Wuppertal
+DESCRIPTION:Am Mi 03.06.2026: Nur Frühschwimmen bis 12:00 Uhr.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260604-freibad-mählersbeck-wetter@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260604
+DTEND;VALUE=DATE:20260605
+SUMMARY:Freibad Mählersbeck: geschlossen (Wetter)
+LOCATION:Freibad Mählersbeck\, Mählersbeck 71\, 42279 Wuppertal
+DESCRIPTION:Am Do 04.06.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260604-hallenbäder-feiertag--fronleichnam@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260604
+DTEND;VALUE=DATE:20260605
+SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Fronleichnam)
+LOCATION:Wuppertal
+DESCRIPTION:Am Do 04.06.2026: Nur die Gartenhallenbäder Langerfeld und Cro
+ nenberg sind von 8:30 bis 15:00 Uhr geöffnet\, alle anderen Hallenbäder 
+ sind geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260605t120000-freibad-mählersbeck-wetter@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260605T120000
+DTEND;TZID=Europe/Berlin:20260605T190000
+SUMMARY:Freibad Mählersbeck: verkürzt geöffnet (Wetter)
+LOCATION:Freibad Mählersbeck\, Mählersbeck 71\, 42279 Wuppertal
+DESCRIPTION:Am Fr 05.06.2026: Nur Frühschwimmen bis 12:00 Uhr.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260606-freibad-mählersbeck-wetter@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260606
+DTEND;VALUE=DATE:20260609
+SUMMARY:Freibad Mählersbeck: geschlossen (Wetter)
+LOCATION:Freibad Mählersbeck\, Mählersbeck 71\, 42279 Wuppertal
+DESCRIPTION:Von Sa 06.06.2026 bis einschließlich Mo 08.06.2026 geschlossen
+ .
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260629-hallenbäder-veranstaltung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260629
+DTEND;VALUE=DATE:20260704
+SUMMARY:Hallenbäder: eingeschränkt geöffnet (Veranstaltung)
+LOCATION:Wuppertal
+DESCRIPTION:Von Mo 29.06.2026 bis einschließlich Fr 03.07.2026: Schulschwi
+ mmwoche. Die Öffnungszeiten in den städtischen Bädern sind eingeschrän
+ kt. Genaue Zeiten sind hier nicht erfasst.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260704-schwimmsportleistungszentrum-wartung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260704
+DTEND;VALUE=DATE:20260902
+SUMMARY:Schwimmsportleistungszentrum: geschlossen (Wartung)
+LOCATION:Schwimmsportleistungszentrum\, Küllenhahner Straße 130\, 42349 W
+ uppertal
+DESCRIPTION:Von Sa 04.07.2026 bis einschließlich Di 01.09.2026 geschlossen
+ . Wiedereröffnung am 02.09.2026.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260714t080000-gartenhallenbad-langerfeld-veranstaltung@baeder-wuppert
+ al
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260714T080000
+DTEND;TZID=Europe/Berlin:20260714T140000
+SUMMARY:Gartenhallenbad Langerfeld: verkürzt geöffnet (Veranstaltung)
+LOCATION:Gartenhallenbad Langerfeld\, Am Timpen 51\, 42389 Wuppertal
+DESCRIPTION:Am Di 14.07.2026: Schwimmfest der GES Langerfeld. Öffentlich n
+ ur von 6:45 bis 8:00 Uhr geöffnet.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260716-stadtbad-uellendahl-veranstaltung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260716
+DTEND;VALUE=DATE:20260717
+SUMMARY:Stadtbad Uellendahl: geschlossen (Veranstaltung)
+LOCATION:Stadtbad Uellendahl\, Röttgen 149\, 42109 Wuppertal
+DESCRIPTION:Am Do 16.07.2026 geschlossen. Schulveranstaltung.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260718-schwimmoper-wartung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260718
+DTEND;VALUE=DATE:20260831
+SUMMARY:Schwimmoper: geschlossen (Wartung)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Von Sa 18.07.2026 bis einschließlich So 30.08.2026 geschlossen
+ .
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260808-gartenhallenbad-cronenberg-personalmangel-und-personaleinsatz-
+ im-freibad@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260808
+DTEND;VALUE=DATE:20260810
+SUMMARY:Gartenhallenbad Cronenberg: geschlossen (Personalmangel und Persona
+ leinsatz im Freibad)
+LOCATION:Gartenhallenbad Cronenberg\, Zum Tal\, 42349 Wuppertal
+DESCRIPTION:Von Sa 08.08.2026 bis einschließlich So 09.08.2026 geschlossen
+ .
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260912-schwimmsportleistungszentrum-veranstaltung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260914
+SUMMARY:Schwimmsportleistungszentrum: geschlossen (Veranstaltung)
+LOCATION:Schwimmsportleistungszentrum\, Küllenhahner Straße 130\, 42349 W
+ uppertal
+DESCRIPTION:Von Sa 12.09.2026 bis einschließlich So 13.09.2026 geschlossen
+ . Vereinsveranstaltung.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260924t180000-schwimmoper-wettkampf@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20260924T180000
+DTEND;TZID=Europe/Berlin:20260928T200000
+SUMMARY:Schwimmoper: geschlossen (Wettkampf)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Von Do 24.09.2026\, 18:00 Uhr bis Mo 28.09.2026\, 20:00 Uhr ges
+ chlossen. OPERA Swim Classics.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261003-gartenhallenbad-cronenberg-wartung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261116
+SUMMARY:Gartenhallenbad Cronenberg: geschlossen (Wartung)
+LOCATION:Gartenhallenbad Cronenberg\, Zum Tal\, 42349 Wuppertal
+DESCRIPTION:Von Sa 03.10.2026 bis einschließlich So 15.11.2026 geschlossen
+ .
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261003-hallenbäder-feiertag--tag-der-deutschen-einheit@baeder-wupper
+ tal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+SUMMARY:Hallenbäder: eingeschränkt geöffnet (Feiertag: Tag der Deutschen
+  Einheit)
+LOCATION:Wuppertal
+DESCRIPTION:Am Sa 03.10.2026: Nur die Schwimmoper ist von 8:30 bis 15:00 Uh
+ r geöffnet\, alle anderen Hallenbäder sind geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261009t180000-schwimmoper-wettkampf@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20261009T180000
+DTEND;TZID=Europe/Berlin:20261013T000000
+SUMMARY:Schwimmoper: geschlossen (Wettkampf)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Von Fr 09.10.2026\, 18:00 Uhr bis einschließlich Mo 12.10.2026
+  geschlossen. Bezirkskurzbahnmeisterschaften Rhein-Wupper. Auch Sauna und 
+ Fitness geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261019-stadtbad-uellendahl-sanierung@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20280420
+SUMMARY:Stadtbad Uellendahl: geschlossen (Sanierung)
+LOCATION:Stadtbad Uellendahl\, Röttgen 149\, 42109 Wuppertal
+DESCRIPTION:Ab Mo 19.10.2026 für voraussichtlich eineinhalb Jahre geschlos
+ sen. Das Ende des Eintrags ist geschätzt.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261029t180000-schwimmoper-wettkampf@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20261029T180000
+DTEND;TZID=Europe/Berlin:20261102T000000
+SUMMARY:Schwimmoper: geschlossen (Wettkampf)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Von Do 29.10.2026\, 18:00 Uhr bis einschließlich So 01.11.2026
+  geschlossen. NRW- und Para-Kurzbahnmeisterschaften.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261101-alle-hallenbäder-feiertag--allerheiligen@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Allerheiligen)
+LOCATION:Wuppertal
+DESCRIPTION:Am So 01.11.2026 geschlossen. Laut Feiertagsregelung sollte die
+  Schwimmoper von 8:30 bis 15:00 Uhr geöffnet sein. Tatsächlich blieben a
+ lle städtischen Bäder geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261110t080000-schwimmoper-wettkampf@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20261110T080000
+DTEND;TZID=Europe/Berlin:20261117T140000
+SUMMARY:Schwimmoper: geschlossen (Wettkampf)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Von Di 10.11.2026\, 08:00 Uhr bis Di 17.11.2026\, 14:00 Uhr ges
+ chlossen. Deutsche Kurzbahnmeisterschaften.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261119t180000-schwimmoper-wettkampf@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20261119T180000
+DTEND;TZID=Europe/Berlin:20261123T000000
+SUMMARY:Schwimmoper: geschlossen (Wettkampf)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Von Do 19.11.2026\, 18:00 Uhr bis einschließlich So 22.11.2026
+  geschlossen. DMSJ-Landesfinale NRW.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261204t080000-schwimmoper-wettkampf@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;TZID=Europe/Berlin:20261204T080000
+DTEND;TZID=Europe/Berlin:20261208T000000
+SUMMARY:Schwimmoper: geschlossen (Wettkampf)
+LOCATION:Schwimmoper\, Südstraße 29\, 42103 Wuppertal
+DESCRIPTION:Von Fr 04.12.2026\, 08:00 Uhr bis einschließlich Mo 07.12.2026
+  geschlossen. DMSJ-Bundesfinale.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261224-alle-hallenbäder-feiertag--heiligabend@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20261224
+DTEND;VALUE=DATE:20261225
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Heiligabend)
+LOCATION:Wuppertal
+DESCRIPTION:Am Do 24.12.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261225-alle-hallenbäder-feiertag--1--weihnachtstag@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: 1. Weihnachtstag)
+LOCATION:Wuppertal
+DESCRIPTION:Am Fr 25.12.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261226-alle-hallenbäder-feiertag--2--weihnachtstag@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20261226
+DTEND;VALUE=DATE:20261227
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: 2. Weihnachtstag)
+LOCATION:Wuppertal
+DESCRIPTION:Am Sa 26.12.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20261231-alle-hallenbäder-feiertag--silvester@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Silvester)
+LOCATION:Wuppertal
+DESCRIPTION:Am Do 31.12.2026 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:20270101-alle-hallenbäder-feiertag--neujahr@baeder-wuppertal
+DTSTAMP:20261116T084645Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Alle Hallenbäder: geschlossen (Feiertag: Neujahr)
+LOCATION:Wuppertal
+DESCRIPTION:Am Fr 01.01.2027 geschlossen.
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
