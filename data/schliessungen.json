@@ -313,6 +313,13 @@
   },
   {
     "bad": "Schwimmoper",
+    "status": "eingeschränkt geöffnet",
+    "grund": "Veranstaltung",
+    "von": "30.11.2026",
+    "hinweis": "Pressekonferenz zum 70-jährigen Jubiläum der Schwimmoper im und am Bewegungsbad. Es wird gefilmt und fotografiert. Uhrzeit und Auswirkungen auf den Badebetrieb sind nicht angekündigt."
+  },
+  {
+    "bad": "Schwimmoper",
     "status": "geschlossen",
     "grund": "Wettkampf",
     "von": "04.12.2026 08:00",
@@ -348,5 +355,13 @@
     "status": "geschlossen",
     "grund": "Feiertag: Neujahr",
     "von": "01.01.2027"
+  },
+  {
+    "bad": "Schwimmoper",
+    "status": "eingeschränkt geöffnet",
+    "grund": "Veranstaltung",
+    "von": "23.04.2027",
+    "bis": "24.04.2027",
+    "hinweis": "Jubiläums-Aufführung „Schwimmoper“ zum 70-jährigen Bestehen mit Publikum im Becken, jeweils 20:00 Uhr (Einlass 19:30 Uhr). Wie weit der Badebetrieb eingeschränkt ist, ist noch nicht angekündigt."
   }
 ]
