@@ -146,6 +146,21 @@ function schliessungZu(name, t) {
   }
   return null;
 }
+// Beginnt heute während der laufenden Öffnungszeit eine Schließung? Dann endet die Öffnung früher.
+function frueheresEnde(name, t, ende) {
+  let x = new Date(Math.floor(t.getTime() / 60000) * 60000 + 60000);
+  while (x < ende) {
+    const e = schliessungZu(name, x);
+    if (e) return [x, e];
+    x = new Date(x.getTime() + 60000);
+  }
+  return [ende, null];
+}
+// Eingeschränkt geöffnet (z. B. Veranstaltung) an diesem Tag für dieses Bad?
+function einschraenkung(name, t) {
+  const tag0 = new Date(t.getFullYear(), t.getMonth(), t.getDate()), tag1 = new Date(tag0.getTime() + 86400000);
+  return DATEN.find(e => e.bad === name && e.status === "eingeschränkt geöffnet" && !e.wiederholung && parse(e.start) < tag1 && parse(e.ende) > tag0);
+}
 function feiertagHinweis(t) {
   return DATEN.find(e => e.bad === "Hallenbäder" && t >= parse(e.start) && t < parse(e.ende));
 }
@@ -215,14 +230,20 @@ function zeile(bad, t) {
     li.className = "unklar"; punkt.textContent = "Sonderzeiten";
     info.textContent = feiertag.beschreibung;
   } else if (offen) {
-    const [, ende] = offen;
+    const [ende, grundFrueh] = frueheresEnde(bad.name, t, offen[1]);
     const kasse = minus(ende, bad.kassenschluss_minuten_vorher), schwimm = minus(ende, bad.schwimmzeit_ende_minuten_vorher);
     li.className = "offen"; punkt.textContent = "geöffnet";
-    info.textContent = "bis " + hhmm(ende) + " Uhr · Kassenschluss " + hhmm(kasse) + " Uhr · Schwimmzeit bis " + hhmm(schwimm) + " Uhr";
+    info.textContent = "bis " + hhmm(ende) + " Uhr" + (grundFrueh ? " (heute früher, " + grundFrueh.grund + ")" : "") + " · Kassenschluss " + hhmm(kasse) + " Uhr · Schwimmzeit bis " + hhmm(schwimm) + " Uhr";
     const rest = Math.round((ende - t) / 60000);
     if (rest <= 60) {
       const w = document.createElement("span"); w.className = "warnung";
       w.textContent = "Schließt in " + rest + " Min." + (t >= kasse ? " Die Kasse ist bereits geschlossen, kein Einlass mehr." : "");
+      li.append(w);
+    }
+    const ein = einschraenkung(bad.name, t);
+    if (ein) {
+      const w = document.createElement("span"); w.className = "warnung";
+      w.textContent = "Heute eingeschränkt geöffnet (" + ein.grund + "). " + ein.beschreibung;
       li.append(w);
     }
   } else {
