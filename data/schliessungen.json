@@ -312,6 +312,14 @@
     "hinweis": "DMSJ-Landesfinale NRW."
   },
   {
+    "bad": "Gartenhallenbad Cronenberg",
+    "status": "geschlossen",
+    "grund": "Wettkampf",
+    "von": "21.11.2026",
+    "bis": "22.11.2026",
+    "hinweis": "Das Personal hilft beim DMSJ-Landesfinale NRW in der Schwimmoper aus."
+  },
+  {
     "bad": "Schwimmoper",
     "status": "eingeschränkt geöffnet",
     "grund": "Veranstaltung",
